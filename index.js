@@ -9,7 +9,7 @@ const generateHTML = require('./src/generateHTML.js');
 const writeFileAsync = util.promisify(fs.writeFile);
 
 const promptUser = () => {
-    inquirer.prompt([
+    return inquirer.prompt([
         {
             type: 'input',
             name: 'name',
@@ -43,40 +43,39 @@ function addTeam() {
         }
     ])
         .then((answer) => {
-            switch (answer) {
+            switch (answer.addteam) {
                 case 'Engineer':
                     addEngineer();
                     break;
                 case 'Intern':
                     addIntern();
                     break;
-                // case `I don't want to add more team members`:
-                //     generateTeam();
-                //     break;
+                default:
+                    generateTeam();
+                    break;
             }
-        }
-        )
+        })
 }
 function addEngineer() {
     inquirer.prompt([
         {
             type: 'input',
-            name: 'Engineername',
+            name: 'name',
             message: `What is your engineer's name?`,
         },
         {
             type: 'input',
-            name: 'Engineerid',
+            name: 'id',
             message: `What is your engineer's ID?`,
         },
         {
             type: 'input',
-            name: 'Engineeremail',
+            name: 'email',
             message: `What is your engineer's email?`,
         },
         {
             type: 'input',
-            name: 'Engineergithub',
+            name: 'github',
             message: `What is your engineer's GitHub username?`,
         },
     ])
@@ -89,35 +88,36 @@ function addIntern() {
     inquirer.prompt([
         {
             type: 'input',
-            name: 'Internname',
+            name: 'name',
             message: `What is your intern's name?`,
         },
         {
             type: 'input',
-            name: 'Internid',
+            name: 'id',
             message: `What is your intern's ID?`,
         },
         {
             type: 'input',
-            name: 'Internemail',
+            name: 'email',
             message: `What is your intern's email?`,
         },
         {
             type: 'input',
-            name: 'Internschool',
-            message: `What is your intern's school?`,
+            name: 'school',
+            message: `What school did your intern go to?`,
         },
     ])
-    .then((answers) => {
-        // let manage = New Manager(answers.name, answers.id, answers.email, answers.officenumber)
-        addTeam();
-    })
+        .then((answers) => {
+            // let manage = New Manager(answers.name, answers.id, answers.email, answers.officenumber)
+            addTeam();
+        })
 }
-// function generateTeam(){
+function generateTeam(){
+    console.log("hi")
 // .then((answers) => writeFileAsync('index.html', generateHTML(answers)))
 //         .then(() => console.log('Successfully wrote to index.html'))
 //         .catch((err) => console.error(err));
-// }
+}
 const init = () => {
     console.log("Please build your team")
     promptUser()
@@ -125,6 +125,7 @@ const init = () => {
             // let manage = New Manager(answers.name, answers.id, answers.email, answers.officenumber)
             addTeam();
         })
+        .catch((err) => console.error(err));
 };
 
 init();
