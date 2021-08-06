@@ -5,9 +5,9 @@ const path = require("path");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const generateHTML = require('./src/generateHTML.js');
 const writeFileAsync = util.promisify(fs.writeFile);
 
+//prompts user to answer questions about the manager
 const promptUser = () => {
     return inquirer.prompt([
         {
@@ -27,23 +27,24 @@ const promptUser = () => {
         },
         {
             type: 'input',
-            name: 'officenumber',
+            name: 'officeNumber',
             message: `What is the team manager's office number?`,
         },
     ]);
 };
 
+//allows user to add another employeee or stop the questions via a switch function
 function addTeam() {
     inquirer.prompt([
         {
             type: 'list',
-            name: 'addteam',
+            name: 'addTeam',
             message: `Which type of team member would you like to add?`,
             choices: ['Engineer', 'Intern', `I don't want to add more team members`],
         }
     ])
         .then((answer) => {
-            switch (answer.addteam) {
+            switch (answer.addTeam) {
                 case 'Engineer':
                     addEngineer();
                     break;
@@ -56,6 +57,7 @@ function addTeam() {
             }
         })
 }
+//asks questions about engineer
 function addEngineer() {
     inquirer.prompt([
         {
@@ -84,6 +86,8 @@ function addEngineer() {
             addTeam();
         })
 }
+
+//asks questions about intern
 function addIntern() {
     inquirer.prompt([
         {
@@ -112,20 +116,22 @@ function addIntern() {
             addTeam();
         })
 }
+//takes the answers about each type of employee and writes it to the html
 function generateTeam(){
     console.log("hi")
 // .then((answers) => writeFileAsync('index.html', generateHTML(answers)))
 //         .then(() => console.log('Successfully wrote to index.html'))
 //         .catch((err) => console.error(err));
 }
+
+//starts the manager questions
 const init = () => {
     console.log("Please build your team")
     promptUser()
         .then((answers) => {
-            // let manage = New Manager(answers.name, answers.id, answers.email, answers.officenumber)
+            let manager = new Manager(answers.name, answers.id, answers.email, answers.officenumber)
             addTeam();
         })
-        .catch((err) => console.error(err));
 };
 
 init();
