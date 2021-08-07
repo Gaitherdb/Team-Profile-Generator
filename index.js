@@ -126,10 +126,10 @@ function generateTeam(){
 
 //starts the manager questions
 const init = () => {
-    console.log("Please build your team")
+    console.log("Please build your team");
     promptUser()
         .then((answers) => {
-            let manager = new Manager(answers.name, answers.id, answers.email, answers.officenumber)
+            let manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
             addTeam();
         })
 };
