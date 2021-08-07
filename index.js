@@ -6,9 +6,9 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const writeFileAsync = util.promisify(fs.writeFile);
-
+const team = [];
 //prompts user to answer questions about the manager
-const promptUser = () => {
+const addManager = () => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -82,7 +82,8 @@ function addEngineer() {
         },
     ])
         .then((answers) => {
-            // let manage = New Manager(answers.name, answers.id, answers.email, answers.officenumber)
+            let engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+            team += engineer;
             addTeam();
         })
 }
@@ -112,13 +113,17 @@ function addIntern() {
         },
     ])
         .then((answers) => {
-            // let manage = New Manager(answers.name, answers.id, answers.email, answers.officenumber)
+            let intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+            team += intern;
             addTeam();
         })
 }
 //takes the answers about each type of employee and writes it to the html
 function generateTeam(){
-    console.log("hi")
+    console.log(team);
+    for (i=0; i < team.length; i++){
+        team[i].getRole()
+    }
 // .then((answers) => writeFileAsync('index.html', generateHTML(answers)))
 //         .then(() => console.log('Successfully wrote to index.html'))
 //         .catch((err) => console.error(err));
@@ -127,9 +132,11 @@ function generateTeam(){
 //starts the manager questions
 const init = () => {
     console.log("Please build your team");
-    promptUser()
+    addManager()
         .then((answers) => {
+            
             let manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+            team += manager;
             addTeam();
         })
 };
