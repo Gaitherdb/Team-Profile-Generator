@@ -10,7 +10,7 @@ describe("Manager class", () => {
     });
 
     describe("getRole method", () => {
-        it("gets Manager role from inquirer", () => {
+        it("gets Manager role from getRole() method", () => {
             const manager = new Manager("David", "1", "gaitherdb@gmail.com", "10");
             const role = "Manager";
             expect(manager.getRole()).toEqual(role);

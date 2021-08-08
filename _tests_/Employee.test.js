@@ -52,7 +52,7 @@ describe("Employee class", () => {
 
     //Makes sure that Employee is overridden as the role for the employee class getRole() method
     describe("getRole method", () => {
-        it("gets employee role from inquirer", () => {
+        it("gets employee role from getRole() method", () => {
             const employee = new Employee("David", "1", "gaitherdb@gmail.com");
             const role = "Employee";
             expect(employee.getRole()).toEqual(role);

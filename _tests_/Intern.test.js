@@ -10,7 +10,7 @@ describe("Intern class", () => {
     });
 
     describe("getRole method", () => {
-        it("gets Intern role from inquirer", () => {
+        it("gets Intern role from getRoll() method", () => {
             const intern = new Intern("David", "1", "gaitherdb@gmail.com", "University of Richmond");
             const role = "Intern";
             expect(intern.getRole()).toEqual(role);

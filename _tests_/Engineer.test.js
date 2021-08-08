@@ -10,7 +10,7 @@ describe("Engineer class", () => {
     });
 
     describe("getRole method", () => {
-        it("gets Engineer role from inquirer", () => {
+        it("gets Engineer role from getRole() method", () => {
             const engineer = new Engineer("David", "1", "gaitherdb@gmail.com", "https://github.com/Gaitherdb");
             const role = "Engineer";
             expect(engineer.getRole()).toEqual(role);
