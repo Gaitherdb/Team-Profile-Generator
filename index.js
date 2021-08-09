@@ -5,7 +5,7 @@ const path = require("path");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const generateHTML = require("./lib/Render");
+const generateHTML = require("./util/Render");
 const writeFileAsync = util.promisify(fs.writeFile);
 const dir = path.resolve(__dirname, "dist");
 const output = path.join(dir, "team.html");
@@ -124,7 +124,6 @@ function addIntern() {
 }
 //takes the answers about each type of employee and writes it to the html
 function generateTeam(){
-    console.log(team);
     writeFileAsync(output, generateHTML(team), function(err){
         if (err) throw err;
     })
