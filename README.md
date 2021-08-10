@@ -3,7 +3,7 @@
 
   ## Description
 
-  A command-line application that accepts user input to make a webpage that displays employees and information about them. This is intended for a software developer company with a manger, engineers and possibly an intern. Having an webpage that neatly organizes this information allows for an easy way to share information about your employees, including name, role, email, or possibly their github repo or the school they attended, depending on the role. 
+  A command-line application that accepts user input to make a webpage that displays employees and information about them. This is intended for a software developer company with a manger, engineers and possibly an intern. Having an webpage that neatly organizes this information allows for an easy way to share information about your employees, including name, role, email, or possibly their GitHub profile or the school they attended, depending on the role. 
 
   I use Node.js to start the application on the backend, which runs the npm inquirer module to prompt input. The collected information is sorted by different classes. Each class has methods pertaining to the class, and each method and class are tested in the test files. The information is then parsed and passed into HTML format.
   
