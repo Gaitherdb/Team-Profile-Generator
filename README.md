@@ -21,6 +21,7 @@
   
   ## Usage
   When node.js is installed and the path is set to the Good-README-Generator folder in the terminal, run the index.js file by typing node index.js. Answer each prompt with the specifics to your project.
+  ![Tutorial](./Videos/usagegif.gif)
 
   ## License  
 
