@@ -28,7 +28,7 @@
   ```
   
   ## Usage
-  Set the path to the Team-Profile-Generator folder in the terminal, run the index.js file by typing `node index.js`. Answer each prompt with the specifics to your project and a styled HTML will be generated with the user input.
+  Set the path to the Team-Profile-Generator folder in the terminal, run the index.js file by typing `node index.js`. Answer each prompt with the specifics for your team and a styled HTML will be generated with the user input.
 
 https://user-images.githubusercontent.com/83731627/128808170-e8759bc3-9aef-440f-b34a-0770dcd5037e.mp4
 
